@@ -1,1 +1,13 @@
-
+{
+  "name": "MemeMix Arena",
+  "short_name": "MemeMix",
+  "description": "لعبة تحديات الميمز والأصوات المضحكة",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0c0b1b",
+  "theme_color": "#9254ff",
+  "lang": "ar",
+  "dir": "rtl"
+}
