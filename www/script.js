@@ -89,3 +89,9 @@ function startGame(mode = "sounds") {
 
   $("game").classList.remove("hidden");
   $("result").class
+  if ("serviceWorker" in navigator && location.protocol === "https:") {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js")
+      .catch(error => console.error("Service Worker:", error));
+  });
+}
