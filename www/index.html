@@ -1,1 +1,52 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#111126">
+<meta name="description" content="MemeMix Arena - تحديات الميمز والأصوات المضحكة">
+<title>MemeMix Arena</title>
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+</head>
+<body>
+<div class="app">
 
+<header class="topbar">
+  <div class="logo">😂</div>
+  <div class="brand">
+    <h1>MemeMix <span>ARENA</span></h1>
+    <p>ساحة التحديات المجنونة!</p>
+  </div>
+  <div class="coins">🪙 <b id="coins">100</b></div>
+</header>
+
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="badge">🔥 التحدي يبدأ الآن</div>
+    <h2>هل أنت مستعد<br>للضحك؟</h2>
+    <p>قلّد الأصوات، اجمع النقاط، وكن ملك الميمز!</p>
+    <button class="primary-btn" onclick="startGame()">🎮 ابدأ التحدي</button>
+  </div>
+  <div class="hero-emoji">🤪</div>
+</section>
+
+<section class="stats">
+  <div class="stat"><span>🏆</span><b id="best">0</b><small>أفضل نتيجة</small></div>
+  <div class="stat"><span>🎯</span><b id="level">1</b><small>المستوى</small></div>
+  <div class="stat"><span>⚡</span><b id="played">0</b><small>التحديات</small></div>
+</section>
+
+<section id="game" class="game-card hidden">
+  <div class="game-head">
+    <button class="icon-btn" onclick="exitGame()">✕</button>
+    <span id="roundLabel">التحدي 1</span>
+    <span>⭐ <b id="roundScore">0</b></span>
+  </div>
+
+  <div class="progress"><div id="progressFill"></div></div>
+
+  <div class="challenge">
+    <div id="challengeEmoji" class="challenge-emoji">😂</div>
+    <div class="challenge-tag
