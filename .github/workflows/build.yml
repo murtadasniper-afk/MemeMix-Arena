@@ -3,18 +3,17 @@ name: Build MemeMix Arena APK
 on:
   workflow_dispatch:
   push:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -25,24 +24,25 @@ jobs:
           distribution: temurin
           java-version: 21
 
-      - name: Install dependencies
+      - name: Setup Android project
         run: |
           npm init -y
-          npm install @capacitor/core @capacitor/cli @capacitor/android
-
-      - name: Configure Capacitor
-        run: |
+          npm install @capacitor/core@6 @capacitor/cli@6 @capacitor/android@6
           npx cap init "MemeMix Arena" "com.mememix.arena" --web-dir www
+          npx cap add android
 
-      - name: Add Android platform
-        run: npx cap add android
+      - name: Align Kotlin versions
+        working-directory: android
+        run: |
+          echo "kotlinVersion=1.8.22" >> gradle.properties
+          sed -i 's/kotlin-stdlib-jdk7:1.6.21/kotlin-stdlib:1.8.22/g' app/build.gradle
 
       - name: Sync Android
         run: npx cap sync android
 
       - name: Build APK
+        working-directory: android
         run: |
-          cd android
           chmod +x gradlew
           ./gradlew assembleDebug
 
